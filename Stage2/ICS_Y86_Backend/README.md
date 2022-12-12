@@ -1,25 +1,30 @@
-<h1 align="center"> 
-ICS_Y86_Backend
-<br>
-</h1>
+# ICS_Y86_Backend
 
-ICS_Y86 Backend Written in Golang
+An ICS_Y86 Backend Written in Golang
 
 Stage 2
 
 ## Features
 
-- Web Server supported
+- WASM, packed with frontend
 
 ## Usage
 
 ### prerequisite
 
-To be done.
+Go 1.19
 
 ### build and run
 
-To be done.
+```shell
+export GOARCH=wasm
+export GOOS=js
+go build -o .\build\ICS_Y86_Backend.wasm
+```
+
+导入到前端并加载
+
+教程：[Go WebAssembly (Wasm) 简明教程](https://geektutu.com/post/quick-go-wasm.html)
 
 ## License
 
