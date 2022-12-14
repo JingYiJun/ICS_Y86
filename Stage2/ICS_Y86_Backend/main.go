@@ -10,7 +10,9 @@ import (
 	"syscall/js"
 )
 
-func run(reader io.Reader) string {
+type Map map[string]any
+
+func run(reader io.Reader) Map {
 	r := models.Controller{
 		Device: &models.Device{
 			PC:   0,
@@ -23,9 +25,10 @@ func run(reader io.Reader) string {
 	}
 	err := r.Parse(bufio.NewReader(reader))
 	if err != nil {
-		panic(err)
+		return Map{"result": "", "error": err}
 	}
-	return r.Run()
+	result, err := r.Run()
+	return Map{"result": result, "error": err}
 }
 
 func goRun(_ js.Value, args []js.Value) interface{} {

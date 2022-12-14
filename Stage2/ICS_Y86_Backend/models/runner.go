@@ -14,7 +14,7 @@ const (
 
 const AddrMax = 64 * 1024 * 1024 // 64MB
 
-func (c *Controller) Run() string {
+func (c *Controller) Run() (string, error) {
 	d := c.Device
 	output := make([]string, 0, 100)
 	for c.Device.Stat == AOK {
@@ -182,7 +182,7 @@ func (c *Controller) Run() string {
 		}
 		ans, err := json.Marshal(d)
 		if err != nil {
-			panic(err)
+			return "", err
 		}
 		output = append(output, string(ans))
 	}
@@ -196,5 +196,5 @@ func (c *Controller) Run() string {
 		}
 	}
 	outputBuilder.WriteByte(']')
-	return outputBuilder.String()
+	return outputBuilder.String(), nil
 }
