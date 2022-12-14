@@ -10,7 +10,7 @@ import (
 	"syscall/js"
 )
 
-type Map map[string]any
+type Map = map[string]any
 
 func run(reader io.Reader) Map {
 	r := models.Controller{

@@ -1,0 +1,150 @@
+@import './base.css';
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  font-weight: normal;
+}
+
+
+
+body{
+  background-color: #F6F4E8;
+}
+td, th {
+  border: 1px solid rgb(190,190,190);
+  padding: 8px 15px;
+  text-align: center;
+}
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(200,200,200);
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  position: absolute;
+  top: -60%;
+  left: 140%;
+}
+
+.myTable {
+  border-collapse: collapse;
+  border: 2px solid rgb(200,200,200);
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  position: absolute;
+  top: -106%;
+  left: 140%;
+}
+
+.title{
+  height:10%;
+  width:100%;
+  background-color: rgb(64, 116, 52);
+  margin:0%;
+  position: absolute;
+  left: 0%;
+  top:0%;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size: large;
+  text-align: center;
+
+}
+
+.outer_box {
+  margin: 1%;
+  border-style:hidden;
+  position:absolute;
+
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  display: flex;
+}
+
+
+.btn{
+  background-color:rgb(101, 147, 74); 
+  border: none;
+  color:white;
+  padding: 8px 12px;
+  width: 140px;
+  height: 51px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+input{
+  background-color:rgb(101, 147, 74); 
+  border: none;
+  color:white;
+  padding: 15px 32px;
+  width: 140px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+#fileinp{
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+input:hover{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.button2:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.codeBox{
+  border-style: solid;
+  border-width: 3px;
+  border-color: rgb(101, 147, 74);
+  width: 55%;
+  height: 80%;
+  position: absolute;
+  top:19%;
+  left: 2%;
+  overflow: hidden;
+}
+
+.highlight{
+  background-color: rgba(0, 255, 51, 0.459);
+  background-size: 100%;
+}
+.subTitle
+{
+  background-color: rgb(101, 147, 74);
+  width:auto;
+}
+p{
+  font-size:medium;
+}
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+
+  #app {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 2rem;
+  }
+}

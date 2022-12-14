@@ -1,28 +1,29 @@
-<h1 align="center"> 
-ICS_Y86_Frontend
-<br>
-</h1>
+# vue_y86
 
-ICS_Y86 Frontend
+This template should help get you started developing with Vue 3 in Vite.
 
-Stage 2
+## Recommended IDE Setup
 
-## Features
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-To be done.
+## Customize configuration
 
-## Usage
+See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-### prerequisite
+## Project Setup
 
-To be done.
+```sh
+npm install
+```
 
-### build and run
+### Compile and Hot-Reload for Development
 
-To be done.
+```sh
+npm run dev
+```
 
-## License
+### Compile and Minify for Production
 
-MIT License
-
-Copyright (c) 2022-present ck ct fkx
+```sh
+npm run build
+```
