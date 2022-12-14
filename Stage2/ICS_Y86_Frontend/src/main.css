@@ -29,6 +29,16 @@ table {
     left: 140%;
 }
 
+image:hover {
+    opacity: 0.5;
+}
+
+.github {
+    left: 45%;
+    width: 5%;
+    top: -60%;
+}
+
 .myTable {
     border-collapse: collapse;
     border: 2px solid rgb(200, 200, 200);
