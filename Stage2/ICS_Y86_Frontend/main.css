@@ -42,10 +42,10 @@ table {
   height:10%;
   width:100%;
   background-color: rgb(64, 116, 52);
-  margin:0%;
+  margin:0;
   position: absolute;
-  left: 0%;
-  top:0%;
+  left: 0;
+  top:0;
   font-family:Georgia, 'Times New Roman', Times, serif;
   font-size: large;
   text-align: center;
