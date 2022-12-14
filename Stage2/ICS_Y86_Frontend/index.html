@@ -117,10 +117,12 @@
     <p id="subTitle" class="subTitle" style="color: white">work space</p>
     <pre id="code" style="font-size:4mm;font-weight: bold;">
       </pre>
-    <!-- <label for="fileinp">
-      <input style="position:absolute;left: 100%;" id="disappear" type="file"  ><span id="text"></span>
-      <img style="width:30%;height: 30%;left: 30%;border-style:dashed;border-color: gray;border-radius: 10px;" src="./src/assets/upload.jpg" id="disappear1">
-    </label>  -->
+    <label for="fileinp" onclick="vanish()">
+        <input style="position:absolute;left: 100%;background-color: transparent;opacity:0;" id="disappear" type="file"><span
+            id="text"></span>
+        <img style="width:30%;height: 30%;left: 30%;border-style:dashed;border-color: gray;border-radius: 10px;"
+             src="assets/file.png" id="disappear1">
+    </label>
 </div>
 
 <div id="watchTable" class="outer_box" style="left:3%; top:8%;height: 20%;width: 50%;">
@@ -129,7 +131,7 @@
     <button id="restart" class="btn button2" onclick="Reset()"> 重置</button>
     <button id="pause" class="btn button2"> 暂停</button>
 
-    <label for="fileinp">
+    <label for="fileinp" onclick="vanish()">
         <input type="button" id="btn" value="选择文件"><span id="text"></span>
         <input type="file" id="fileinp">
     </label>
@@ -157,28 +159,36 @@
     const go = new Go();
     WebAssembly.instantiateStreaming(fetch("backend.wasm"), go.importObject).then((result) => go.run(result.instance));
 
-    let inputFile = document.querySelector('input[type=file]');
-    inputFile.onchange = function () {
-        let reader = new FileReader();
-        let file = this.files[0];
-        reader.readAsText(file);
-        reader.onload = function () {
-            code = this.result;
-            document.getElementById("code").innerHTML = this.result;
-            document.getElementById("subTitle").innerHTML = file.name;
-            res = goRun(code);
+    let inputFiles = document.querySelectorAll('input[type=file]');
+    for (let i = 0; i < inputFiles.length; i++) {
+        let inputFile = inputFiles[i];
+        inputFile.onchange = function () {
+            let reader = new FileReader();
+            let file = this.files[0];
+            reader.readAsText(file);
+            reader.onload = function () {
+                code = this.result;
+                document.getElementById("code").innerHTML = this.result;
+                document.getElementById("subTitle").innerHTML = file.name;
+                res = goRun(code);
 
-            if (res.error !== "") {
-                alert("yo文件解析失败，请检查您的文件格式");
-            } else {
-                json = JSON.parse(res.result);
-                // error = res.error;
-                updateTable(json, 0);
-                let but = document.getElementById("pause");
-                but.innerText = "暂停";
-                Reset();
+                if (res.error !== "") {
+                    alert("yo文件解析失败，请检查您的文件格式");
+                } else {
+                    json = JSON.parse(res.result);
+                    // error = res.error;
+                    updateTable(json, 0);
+                    let but = document.getElementById("pause");
+                    but.innerText = "暂停";
+                    Reset();
+                }
             }
         }
+    }
+
+    function vanish() {
+        document.getElementById("disappear").remove();
+        document.getElementById("disappear1").remove();
     }
 
     function updateTable(json, p) {
@@ -238,7 +248,13 @@
         document.getElementById("v_zf").innerHTML = (json[p].CC.ZF).toString(16);
         document.getElementById("v_sf").innerHTML = (json[p].CC.SF).toString(16);
         document.getElementById("v_of").innerHTML = (json[p].CC.OF).toString(16);
-        document.getElementById("v_stat").innerHTML = (json[p].STAT).toString(16);
+
+        let stat = "";
+        if (json[p].STAT === 1) stat = "AOK";
+        else if (json[p].STAT === 2) stat = "HLT";
+        else if (json[p].STAT === 3) stat = "ADR";
+        else if (json[p].STAT === 4) stat = "INS";
+        document.getElementById("v_stat").innerHTML = stat;
 
         for (const property in json[p].MEM) {
             let id = property.toString();
@@ -320,7 +336,7 @@
         document.getElementById("v_zf").innerHTML = 0;
         document.getElementById("v_sf").innerHTML = 0;
         document.getElementById("v_of").innerHTML = 0;
-        document.getElementById("v_stat").innerHTML = 0;
+        document.getElementById("v_stat").innerHTML = "";
 
         for (const property in json[0].MEM) {
             let id = property.toString();
