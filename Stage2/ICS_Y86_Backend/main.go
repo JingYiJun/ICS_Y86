@@ -25,10 +25,13 @@ func run(reader io.Reader) Map {
 	}
 	err := r.Parse(bufio.NewReader(reader))
 	if err != nil {
-		return Map{"result": "", "error": err}
+		return Map{"result": "", "error": err.Error()}
 	}
 	result, err := r.Run()
-	return Map{"result": result, "error": err}
+	if err != nil {
+		return Map{"result": "", "error": err.Error()}
+	}
+	return Map{"result": result, "error": ""}
 }
 
 func goRun(_ js.Value, args []js.Value) interface{} {
