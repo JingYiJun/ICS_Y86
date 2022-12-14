@@ -157,7 +157,7 @@ func (c *Controller) Run() {
 			}
 			d.Stat = d.Push(d.Reg[regA])
 
-		case 11:
+		case 11: // popq rA
 			d.PC += 2
 			if iFun != 0 || regA == 15 || regB != 15 {
 				d.Stat = INS
@@ -165,7 +165,7 @@ func (c *Controller) Run() {
 			}
 			d.Reg[regA], d.Stat = d.Pop()
 
-		case 12:
+		case 12: // iaddq
 			d.PC += 10
 			if regA != 15 || regB == 15 {
 				d.Stat = INS

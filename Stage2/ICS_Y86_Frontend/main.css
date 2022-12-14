@@ -120,7 +120,7 @@ input:hover {
     position: absolute;
     top: 18%;
     left: 2%;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .highlight {
