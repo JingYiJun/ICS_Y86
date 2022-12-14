@@ -65,6 +65,8 @@ Get-Content hello.yo | .\ICS_Y86_Backend.exe > hello.json # for powershell
 
 #### run
 
+用VSCode打开ICS_Y86_Frontend文件夹。在index.html代码页面中鼠标右键点击，利用live server 插件（若没有需在扩展商店中安装）在浏览器中打开。
+
 ## License
 
 MIT License
